@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memories Gallery</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #f7d9e3, #dbe9ff);
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #d94f70;
+    }
+
+    p {
+      color: #555;
+      font-size: 1rem;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 12px 24px;
+      margin: 10px;
+      border: none;
+      border-radius: 30px;
+      background: #fc466b;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #3f5efb;
+    }
+
+    .gallery {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle, #010130, #020220);
+      overflow: hidden;
+    }
+
+    .gallery-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 250px;
+      height: 350px;
+      perspective: 1300px;
+    }
+
+    .carousel {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d;
+      animation: rotateReverse 30s infinite linear;
+    }
+
+    .carousel img {
+      position: absolute;
+      width: 200px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 0 10px #fff;
+    }
+
+    @keyframes rotateReverse {
+      from {
+        transform: rotateY(360deg);
+      }
+      to {
+        transform: rotateY(0deg);
+      }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Front page -->
+  <div class="container" id="frontPage">
+    <div class="box">
+      <h1>Welcome to Our Gallery</h1>
+      <p>Every moment with you is a treasure worth keeping...</p>
+      <div class="buttons">
+        <button onclick="enterGallery()">Our Memories ✨</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery page -->
+  <div class="gallery" id="galleryPage">
+    <audio id="backgroundMusic" src="music.mp3" loop></audio>
+    <div class="gallery-container">
+      <div class="carousel" id="carousel">
+        <img src="image1.jpg" style="transform: rotateY(0deg) translateZ(600px);">
+        <img src="image2.jpg" style="transform: rotateY(30deg) translateZ(600px);">
+        <img src="image45.jpg" style="transform: rotateY(60deg) translateZ(600px);">
+        <img src="image6.jpg" style="transform: rotateY(90deg) translateZ(600px);">
+        <img src="image7.jpg" style="transform: rotateY(120deg) translateZ(600px);">
+        <img src="image8.jpg" style="transform: rotateY(150deg) translateZ(600px);">
+        <img src="image9.jpg" style="transform: rotateY(180deg) translateZ(600px);">
+        <img src="image10.jpg" style="transform: rotateY(210deg) translateZ(600px);">
+        <img src="image11.jpg" style="transform: rotateY(240deg) translateZ(600px);">
+        <img src="image125.jpg" style="transform: rotateY(270deg) translateZ(600px);">
+        <img src="image13.jpg" style="transform: rotateY(300deg) translateZ(600px);">
+        <img src="image18.jpg" style="transform: rotateY(330deg) translateZ(600px);">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function enterGallery() {
+      const correctPassword = "nanna"; // Set your password here
+      const userPassword = prompt("Enter the password to access the gallery:");
+
+      if (userPassword === correctPassword) {
+        document.getElementById("frontPage").style.display = "none";
+        document.getElementById("galleryPage").style.display = "block";
+
+        const music = document.getElementById("backgroundMusic");
+        music.play();
+      } else {
+        alert("Incorrect password. Please try again!");
+      }
+    }
+  </script>
+
+</body>
+</html>
